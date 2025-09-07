@@ -46,7 +46,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div clasName="copyright">
+        <div className="copyright">
         &copy:1997-2004 Netflix,Inc.
       </div>
       </div>
