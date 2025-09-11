@@ -15,7 +15,17 @@
 
 .row_posters::-webkit-scrollbar {
     display: none;
+} 
+.row__arrow {
+  background: rgba(0,0,0,0.5);
+  border: 0;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
 }
+.row__arrow:hover { background: rgba(255,255,255,0.08); }
+
 
 .row_poster:hover {
     transform: scale(1.08);

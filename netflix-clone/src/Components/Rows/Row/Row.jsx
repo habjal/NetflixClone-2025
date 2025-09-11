@@ -31,8 +31,8 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
         (url) => {
           console.log(url);
           const urlParams = new URLSearchParams(new URL(url).search);
-          console.log(urlParams);
-          console.log(urlParams.get("v"));
+          // console.log(urlParams);
+          // console.log(urlParams.get("v"));
           setTrailerUrl(urlParams.get("v"));
         }
       );
@@ -50,6 +50,15 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
   return (
     <div className="row">
       <h1>{title}</h1>
+      <div className="row__scrollControls">
+        <button className="row__arrow left" onClick={() => scroll("left")}>
+          &lt;
+        </button>
+        <button className="row__arrow right" onClick={() => scroll("right")}>
+          &gt;
+        </button>
+      </div>
+
       <div className="row_posters">
         {movies?.map((movie, index) => (
           <img
