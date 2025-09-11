@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Row.css";
 import axios from "../../../utils/axios";
 import movieTrailer from "movie-trailer";
@@ -7,6 +7,7 @@ import YouTube from "react-youtube";
 const Row = ({ title, fetchUrl, isLargeRow }) => {
   const [movies, setMovie] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
+  const rowRef = useRef(null);
 
   const base_url = "https://image.tmdb.org/t/p/original";
 
@@ -39,6 +40,19 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     }
   };
 
+  // ✅ scroll function
+  const scroll = (direction) => {
+    if (rowRef.current) {
+      const scrollAmount = 500;
+      if (direction === "left") {
+        rowRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      } else {
+        rowRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      }
+    }
+  };
+
+
   const opts = {
     height: "390",
     width: "100%",
@@ -59,7 +73,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
         </button>
       </div>
 
-      <div className="row_posters">
+      <div className="row_posters" ref={rowRef}>
         {movies?.map((movie, index) => (
           <img
             onClick={() => handleClick(movie)}
